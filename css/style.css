@@ -1,0 +1,80 @@
+/* Importa a fonte Poppins do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+/* Aplica estilos globais a todos os elementos */
+*{
+    margin: 0; /* Remove a margem padrão */
+    padding: 0; /* Remove o padding padrão */
+    box-sizing: border-box; /* Inclui padding e borda no tamanho total do elemento */
+    font-family: 'Poppins', sans-serif; /* Define a fonte padrão */
+}
+
+/* Estiliza o corpo da página */
+body {
+    width: 100%; /* Largura total */
+    height: 100vh; /* Altura igual à altura da janela de visualização */
+    display: flex; /* Usa flexbox para alinhar os itens */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    flex-direction: column; /* Organiza os itens em coluna */
+}
+
+/* Estiliza o label que será o botão de alternância */
+label {
+    position: relative; /* Define o contexto para posicionamento absoluto dos filhos */
+    width: 480px; /* Largura do botão */
+    height:180px; /* Altura do botão */
+    background: #d9d9d9; /* Cor de fundo clara */
+    border-radius: 100px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    box-shadow: 
+        inset 0px 5px 15px rgba(0,0,0,0.3), /* Sombra interna escura */
+        inset 0px -5px 15px rgba(255,255,255,0.3); /* Sombra interna clara */
+}
+
+/* Cria o círculo deslizante do botão */
+label:after{
+    content: ''; /* Elemento vazio */
+    position: absolute; /* Posicionamento absoluto dentro do label */
+    height: 160px; /* Altura do círculo */
+    width: 160px; /* Largura do círculo */
+    background: #f1f1f1; /* Cor de fundo clara */
+    border-radius: 100px; /* Bordas arredondadas */
+    top:10px; /* Distância do topo */
+    left:10px; /* Distância da esquerda */
+    transition: 0.5s; /* Suaviza a transição */
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2); /* Sombra do círculo */
+}
+
+/* Move o círculo para a direita e muda a cor quando o input está checado */
+input:checked ~ label:after{
+    left:470px; /* Move para a direita */
+    transform: translateX(-100%); /* Ajusta a posição */
+    background: linear-gradient(180deg,#777,#3a3a3a); /* Cor escura em gradiente */
+}
+
+/* Muda a cor de fundo do botão quando ativado */
+input:checked ~ label{
+    background: #242424; /* Fundo escuro */
+}
+
+/* Estiliza o fundo animado da página */
+.background {
+    position: absolute; /* Fica atrás dos outros elementos */
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    background: linear-gradient(45deg,#ff0057,#0099ff,#00ff94,#ffbb00,#ff0057); /* Gradiente colorido */
+    background-size: 400% 400%; /* Tamanho do gradiente para animação */
+    animation: animate 20s linear infinite; /* Animação contínua */
+    z-index: -1; /* Fica atrás dos outros elementos */
+}
+
+/* Muda o fundo para escuro quando o input está checado */
+input:checked + label + .background{
+  background: #242424; /* Fundo escuro */
+}
+
+/* Esconde o input do tipo checkbox */
+input{
+  display: none;
+ } /* Não exibe o checkbox
